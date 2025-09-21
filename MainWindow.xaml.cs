@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -189,28 +190,39 @@ namespace WpfAppCryptoMM
                     buffer = buffer + " ";
                 }
             }
-            ICryptoTransform encryptor = aes.CreateEncryptor(Convert.FromBase64String(AES_Key.Text), Convert.FromBase64String(AES_IV.Text));
-            try
+            ICryptoTransform encryptor;
+            if ( (AES_Key.Text != "" & AES_IV.Text != "") & (buffer.Length != 0))
             {
-                E_TextOut.Text = Convert.ToBase64String(encryptor.TransformFinalBlock(Encoding.UTF8.GetBytes(buffer), 0, Encoding.UTF8.GetBytes(buffer).Length));
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Error: " + ex);
+                encryptor = aes.CreateEncryptor(Convert.FromBase64String(AES_Key.Text), Convert.FromBase64String(AES_IV.Text));
+                try
+                {
+                    E_TextOut.Text = Convert.ToBase64String(encryptor.TransformFinalBlock(Encoding.UTF8.GetBytes(buffer), 0, Encoding.UTF8.GetBytes(buffer).Length));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex);
+                }
             }
 
         }
 
         private void Decrypto(object sender, RoutedEventArgs e)
         {
-            ICryptoTransform encryptor = aes.CreateDecryptor(Convert.FromBase64String(AES_Key.Text), Convert.FromBase64String(AES_IV.Text));
-            byte[] buffer = Convert.FromBase64String(D_TextIn.Text);
-            string text = Encoding.Default.GetString(encryptor.TransformFinalBlock(buffer, 0, buffer.Length));
-
-            if (DisRussian.IsChecked ?? false)
+            if (AES_Key.Text != "" & AES_IV.Text != "")
             {
-                text = Transliteration.LatinToCyrillic(text, NickBuhro.Translit.Language.Russian);
+                ICryptoTransform encryptor = aes.CreateDecryptor(Convert.FromBase64String(AES_Key.Text), Convert.FromBase64String(AES_IV.Text));
+                byte[] buffer = Convert.FromBase64String(D_TextIn.Text);
+                if (buffer.Length != 0)
+                {
+                    string text = Encoding.Default.GetString(encryptor.TransformFinalBlock(buffer, 0, buffer.Length));
+
+                    if (DisRussian.IsChecked ?? false)
+                    {
+                        text = Transliteration.LatinToCyrillic(text, NickBuhro.Translit.Language.Russian);
+                    }
+                    D_TextOut.Text = text.TrimEnd();
+                }
             }
-            D_TextOut.Text = text.TrimEnd();
 
         }
 
