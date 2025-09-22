@@ -7,4 +7,4 @@ This application is based on WPF .NET, is designed to encrypt/decrypt data using
 4) In the Generation tab, you can generate an RSA public/secret key pair in the PEM certificate format, as well as an AES secret key and an IV in the PEM certificate format.
 5) In the "QR" tab, you can generate a QR code from a file by pre-importing it. The QR code will appear immediately. You can also manually enter the data and generate a QR code (UTF-8 support)
 6) The "Info" tab contains information about the application.
-<a>https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/_net_core.png<a>
+<img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/_net_core.png">
