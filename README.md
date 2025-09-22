@@ -8,5 +8,7 @@ This application is based on WPF .NET, is designed to encrypt/decrypt data using
 5) In the "QR" tab, you can generate a QR code from a file by pre-importing it. The QR code will appear immediately. You can also manually enter the data and generate a QR code (UTF-8 support)
 6) The "Info" tab contains information about the application.
 <p>
-  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/_net_core.png" height="100px" width="100px" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/_net_core.png" height="100px" width="100px">
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/c%23.png" height="100px" width="100px">
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/windows.png" height="100px" width="100px">
 </p>
